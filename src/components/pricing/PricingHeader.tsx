@@ -1,4 +1,7 @@
+
 import React from "react";
+import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover";
+import { Info } from "lucide-react";
 
 interface PricingHeaderProps {
   onPeriodChange: (period: "monthly" | "yearly") => void;
@@ -42,15 +45,21 @@ export const PricingHeader: React.FC<PricingHeaderProps> = ({
             Annuel
           </button>
         </div>
-        <button className="bg-[rgba(0,0,0,0)] self-stretch flex items-center gap-2.5 justify-center w-9 my-auto">
-          <div className="self-stretch flex min-h-6 w-[18px] items-center overflow-hidden justify-center my-auto">
-            <img
-              src="https://cdn.builder.io/api/v1/image/assets/05d46c3f8b9c407f9cce3111b0720bb1/d66ab616925b7c9cd346c63c101d518ee5d9032e?placeholderIfAbsent=true"
-              className="aspect-[0.75] object-contain w-[18px] self-stretch my-auto"
-              alt="Info"
-            />
-          </div>
-        </button>
+        <Popover>
+          <PopoverTrigger asChild>
+            <button className="bg-[rgba(0,0,0,0)] self-stretch flex items-center gap-2.5 justify-center w-9 my-auto">
+              <Info className="h-5 w-5 text-gray-500" />
+            </button>
+          </PopoverTrigger>
+          <PopoverContent className="w-80 p-4">
+            <div className="space-y-2">
+              <h4 className="font-medium">Information sur les prix</h4>
+              <p className="text-sm text-muted-foreground">
+                Les tarifs mensuels sont 20% plus chers que les tarifs annuels. Prenez un abonnement annuel pour économiser.
+              </p>
+            </div>
+          </PopoverContent>
+        </Popover>
       </div>
     </div>
   );
