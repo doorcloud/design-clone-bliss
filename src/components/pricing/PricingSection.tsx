@@ -1,8 +1,10 @@
+
 import React, { useState } from "react";
 import { PricingHeader } from "./PricingHeader";
 import { PricingSavingsBanner } from "./PricingSavingsBanner";
 import { PricingCard } from "./PricingCard";
 import { PricingFooter } from "./PricingFooter";
+import { ScrollArea } from "@/components/ui/scroll-area";
 
 const starterFeatures = [
   {
@@ -96,35 +98,37 @@ export const PricingSection: React.FC = () => {
 
       <PricingSavingsBanner />
 
-      <div className="bg-[rgba(0,0,0,0)] flex w-full gap-8 flex-wrap mt-[45px] max-md:max-w-full max-md:mt-10">
-        <PricingCard
-          title="Starter"
-          price="225,000"
-          period="XOF/mois"
-          features={starterFeatures}
-          buttonText="Commencer"
-          buttonVariant="outline"
-        />
+      <ScrollArea className="w-full mt-[45px]">
+        <div className="flex w-full min-w-max gap-4 pb-4">
+          <PricingCard
+            title="Starter"
+            price="225,000"
+            period="XOF/mois"
+            features={starterFeatures}
+            buttonText="Commencer"
+            buttonVariant="outline"
+          />
 
-        <PricingCard
-          title="Pro"
-          price="1,300,000"
-          period="XOF/mois"
-          features={proFeatures}
-          buttonText="Commencer l'essai"
-          buttonVariant="primary"
-          popular
-        />
+          <PricingCard
+            title="Pro"
+            price="1,300,000"
+            period="XOF/mois"
+            features={proFeatures}
+            buttonText="Commencer l'essai"
+            buttonVariant="primary"
+            popular
+          />
 
-        <PricingCard
-          title="Enterprise"
-          price="Sur mesure"
-          period=""
-          features={enterpriseFeatures}
-          buttonText="Contacter l'équipe"
-          buttonVariant="outline"
-        />
-      </div>
+          <PricingCard
+            title="Enterprise"
+            price="Sur mesure"
+            period=""
+            features={enterpriseFeatures}
+            buttonText="Contacter l'équipe"
+            buttonVariant="outline"
+          />
+        </div>
+      </ScrollArea>
 
       <PricingFooter />
     </section>
