@@ -93,13 +93,13 @@ export const PricingSection: React.FC = () => {
   const [period, setPeriod] = useState<"monthly" | "yearly">("monthly");
 
   return (
-    <section className="bg-white shadow-[0px_25px_50px_rgba(0,0,0,0.25)] overflow-hidden p-8 rounded-3xl max-md:px-5">
+    <section className="bg-white shadow-[0px_25px_50px_rgba(0,0,0,0.25)] overflow-hidden p-6 rounded-3xl max-md:px-5">
       <PricingHeader period={period} onPeriodChange={setPeriod} />
 
       <PricingSavingsBanner />
 
       <ScrollArea className="w-full mt-[45px]">
-        <div className="flex w-full min-w-max gap-4 pb-4">
+        <div className="flex gap-3 pb-4 min-w-max">
           <PricingCard
             title="Starter"
             price="225,000"
