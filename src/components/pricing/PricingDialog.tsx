@@ -1,4 +1,3 @@
-
 import React, { useState } from "react";
 import { Dialog, DialogContent } from "@/components/ui/dialog";
 import { PricingHeader } from "./PricingHeader";
@@ -6,7 +5,6 @@ import { PricingSavingsBanner } from "./PricingSavingsBanner";
 import { PricingCard } from "./PricingCard";
 import { PricingFooter } from "./PricingFooter";
 import { Button } from "@/components/ui/button";
-import { ScrollArea } from "@/components/ui/scroll-area";
 
 const monthlyMultiplier = 1.2; // 20% more expensive for monthly plans
 
@@ -124,47 +122,43 @@ export const PricingDialog: React.FC<PricingDialogProps> = ({
   return (
     <Dialog open={open} onOpenChange={onOpenChange}>
       <DialogContent className="w-full max-w-5xl p-0 bg-gray-50 overflow-hidden">
-        <ScrollArea className="h-[85vh] overflow-auto">
-          <section className="bg-white shadow-[0px_25px_50px_rgba(0,0,0,0.25)] overflow-hidden p-8 rounded-3xl max-md:px-5">
-            <PricingHeader period={period} onPeriodChange={setPeriod} />
-            
-            {period === "monthly" && <PricingSavingsBanner />}
+        <section className="bg-white shadow-[0px_25px_50px_rgba(0,0,0,0.25)] overflow-hidden p-8 rounded-3xl max-md:px-5">
+          <PricingHeader period={period} onPeriodChange={setPeriod} />
+          
+          {period === "monthly" && <PricingSavingsBanner />}
 
-            <div className="bg-[rgba(0,0,0,0)] flex w-full justify-center mt-[45px] max-md:mt-10">
-              <div className="flex flex-nowrap gap-8 overflow-x-auto min-w-fit pb-4">
-                <PricingCard
-                  title="Starter"
-                  price={formatPrice(baseYearlyPrices.starter)}
-                  period={period === "monthly" ? "XOF/mois" : "XOF/an"}
-                  features={starterFeatures}
-                  buttonText="Commencer"
-                  buttonVariant="outline"
-                />
+          <div className="bg-[rgba(0,0,0,0)] flex w-full gap-8 flex-wrap mt-[45px] max-md:max-w-full max-md:mt-10">
+            <PricingCard
+              title="Starter"
+              price={formatPrice(baseYearlyPrices.starter)}
+              period={period === "monthly" ? "XOF/mois" : "XOF/an"}
+              features={starterFeatures}
+              buttonText="Commencer"
+              buttonVariant="outline"
+            />
 
-                <PricingCard
-                  title="Pro"
-                  price={formatPrice(baseYearlyPrices.pro)}
-                  period={period === "monthly" ? "XOF/mois" : "XOF/an"}
-                  features={proFeatures}
-                  buttonText="Commencer l'essai"
-                  buttonVariant="primary"
-                  popular
-                />
+            <PricingCard
+              title="Pro"
+              price={formatPrice(baseYearlyPrices.pro)}
+              period={period === "monthly" ? "XOF/mois" : "XOF/an"}
+              features={proFeatures}
+              buttonText="Commencer l'essai"
+              buttonVariant="primary"
+              popular
+            />
 
-                <PricingCard
-                  title="Enterprise"
-                  price="Sur mesure"
-                  period=""
-                  features={enterpriseFeatures}
-                  buttonText="Contacter l'équipe"
-                  buttonVariant="outline"
-                />
-              </div>
-            </div>
+            <PricingCard
+              title="Enterprise"
+              price="Sur mesure"
+              period=""
+              features={enterpriseFeatures}
+              buttonText="Contacter l'équipe"
+              buttonVariant="outline"
+            />
+          </div>
 
-            <PricingFooter />
-          </section>
-        </ScrollArea>
+          <PricingFooter />
+        </section>
       </DialogContent>
     </Dialog>
   );
